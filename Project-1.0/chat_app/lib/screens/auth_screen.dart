@@ -35,17 +35,20 @@ class _Auth_ScreenState extends State<Auth_Screen> {
             .ref()
             .child('user_image')
             .child(authResult.user.uid + '.jpg');
-        ref.putFile(userimg);
 
+        await ref.putFile(userimg);
+        final url= await ref.getDownloadURL();
         await FirebaseFirestore.instance
             .collection('users')
             .doc(authResult.user.uid)
-            .set({'Username': username, 'email': email});
+            .set({'Username': username, 'email': email, 'image_url':url});
+
+      }
         setState(() {
           isloading = false;
         });
       }
-    } on PlatformException catch (err) {
+      on PlatformException catch (err) {
       setState(() {
         isloading = false;
       });
