@@ -1,10 +1,14 @@
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Bubbles extends StatelessWidget {
   final Key key;
   String Message;
+  final String username;
   bool isme;
-  Bubbles(this.Message, this.isme,{required this.key});
+  Bubbles(this.Message, this.username, this.isme, {required this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +28,27 @@ class Bubbles extends StatelessWidget {
               )),
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Text(
-            Message,
-            style: TextStyle(
-                color: Theme.of(context).accentTextTheme.titleMedium!.color),
+          child: Column(
+            crossAxisAlignment:
+                isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              Text(
+                username,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isme
+                        ? Colors.black
+                        : Theme.of(context).accentTextTheme.titleMedium!.color),
+              ),
+              Text(
+                Message,
+                style: TextStyle(
+                    color: isme
+                        ? Colors.black
+                        : Theme.of(context).accentTextTheme.titleMedium!.color),
+                textAlign: isme ? TextAlign.end : TextAlign.start,
+              ),
+            ],
           ),
         ),
       ],
