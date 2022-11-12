@@ -1,3 +1,7 @@
+//This Widget handles the formatting and structuring of
+// the chatbubbles and other properties like alignment,color,
+// adding img by using img_url and its structuring 
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -1,4 +1,5 @@
-// ignore_for_file: import_of_legacy_library_into_null_safe
+//The Chat screen widget consists of 1)Appbar 2)Chats 3)Textinput for chat
+
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,6 +12,8 @@ class Chat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+      //APPBAR
       appBar: AppBar(
         title: Text("Chat_App"),
         actions: [
@@ -42,6 +45,8 @@ class Chat extends StatelessWidget {
           )
         ],
       ),
+      //Chats
+      //Text i/p
       body: Container(
           child: Column(
         children: [Expanded(child: messages()), NewMessage()],

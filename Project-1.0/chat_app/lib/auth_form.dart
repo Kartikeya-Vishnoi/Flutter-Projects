@@ -1,3 +1,6 @@
+//This widget gathers information abot user through form
+//and stores it to the data
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';

@@ -1,4 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// This Widget extracts information about the user which is typing the message
+//through userdata and user varaiables initailized at _sendmessage function
+//and adds up the Entered message, user id, name, image_url as a document....
+//(IN FIREBASE A COLLECTION.. here chats.. CONSISTS 
+//OF DOCUMENT..which stores fields like uid, imgurl etc) 
+// to the chats collection onece the send button is pressed
+
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
