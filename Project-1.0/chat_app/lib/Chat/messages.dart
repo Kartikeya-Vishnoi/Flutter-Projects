@@ -29,7 +29,7 @@ class messages extends StatelessWidget {
               }
 
               final docs = chatSnapshot.data?.docs;
-              final Docs = FirebaseFirestore.instance.collection("users");
+              //final Docs = FirebaseFirestore.instance.collection("users");
               return ListView.builder(
                   reverse: true,
                   itemCount: docs?.length,
