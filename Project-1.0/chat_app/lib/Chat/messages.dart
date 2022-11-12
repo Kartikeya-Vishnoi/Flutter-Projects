@@ -36,6 +36,7 @@ class messages extends StatelessWidget {
                   itemBuilder: (context, index) => (Bubbles(
                         docs?[index].data()['text'],
                         docs?[index].data()['username'],
+                        docs?[index].data()['userimage'],
                         docs?[index].data()['userId'] == user.uid,
                         key:ValueKey(docs?[index].data()['userId'])
                       )));

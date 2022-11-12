@@ -8,50 +8,74 @@ class Bubbles extends StatelessWidget {
   String Message;
   final String username;
   bool isme;
-  Bubbles(this.Message, this.username, this.isme, {required this.key});
+  String userimage;
+  Bubbles(this.Message, this.username, this.userimage, this.isme,
+      {required this.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: isme ? MainAxisAlignment.end : MainAxisAlignment.start,
+    return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(
-              color: isme
-                  ? Color.fromARGB(255, 90, 87, 87)
-                  : Theme.of(context).accentColor,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(12),
-                bottomLeft: !isme ? Radius.circular(0) : Radius.circular(12),
-                bottomRight: isme ? Radius.circular(0) : Radius.circular(12),
-              )),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: Column(
-            crossAxisAlignment:
-                isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-            children: [
-              Text(
-                username,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: isme
-                        ? Colors.black
-                        : Theme.of(context).accentTextTheme.titleMedium!.color),
+        Row(
+          mainAxisAlignment:
+              isme ? MainAxisAlignment.end : MainAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  color: isme
+                      ? Color.fromARGB(255, 90, 87, 87)
+                      : Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                    bottomLeft:
+                        !isme ? Radius.circular(0) : Radius.circular(12),
+                    bottomRight:
+                        isme ? Radius.circular(0) : Radius.circular(12),
+                  )),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Column(
+                crossAxisAlignment:
+                    isme ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    username,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: isme
+                            ? Colors.black
+                            : Theme.of(context)
+                                .accentTextTheme
+                                .titleMedium!
+                                .color),
+                  ),
+                  Text(
+                    Message,
+                    style: TextStyle(
+                        color: isme
+                            ? Colors.black
+                            : Theme.of(context)
+                                .accentTextTheme
+                                .titleMedium!
+                                .color),
+                    textAlign: isme ? TextAlign.end : TextAlign.start,
+                  ),
+                   Positioned(
+                      top: -10,
+                      left: 120,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          userimage,
+                        ),
+                      )),
+                ]
               ),
-              Text(
-                Message,
-                style: TextStyle(
-                    color: isme
-                        ? Colors.black
-                        : Theme.of(context).accentTextTheme.titleMedium!.color),
-                textAlign: isme ? TextAlign.end : TextAlign.start,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
+      clipBehavior: Clip.none,
     );
   }
 }
