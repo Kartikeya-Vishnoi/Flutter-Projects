@@ -1,3 +1,5 @@
+// flutter run --no-sound-null-safety....use this in terminal to run the app
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
